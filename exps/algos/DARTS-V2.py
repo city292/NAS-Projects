@@ -9,8 +9,9 @@ from copy import deepcopy
 import torch
 import torch.nn as nn
 from pathlib import Path
-lib_dir = (Path(__file__).parent / '..' / '..' / 'lib').resolve()
-if str(lib_dir) not in sys.path: sys.path.insert(0, str(lib_dir))
+
+# lib_dir = (Path(__file__).parent / '..' / '..' / 'lib').resolve()
+# if str(lib_dir) not in sys.path: sys.path.insert(0, str(lib_dir))
 from config_utils import load_config, dict2config, configure2str
 from datasets     import get_datasets, SearchDataset
 from procedures   import prepare_seed, prepare_logger, save_checkpoint, copy_checkpoint, get_optim_scheduler
@@ -19,6 +20,7 @@ from log_utils    import AverageMeter, time_string, convert_secs2time, time_stri
 from models       import get_cell_based_tiny_net, get_search_spaces
 from nas_102_api  import NASBench102API as API
 from torchvision import transforms, datasets
+
 
 
 def op_list2str(op_list):
