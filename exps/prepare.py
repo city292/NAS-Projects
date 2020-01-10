@@ -29,9 +29,9 @@ def main():
   print ('torchvision version : {:}'.format(torchvision.__version__))
 
   if name == 'cifar10':
-    dataset = dset.CIFAR10 (args.root, train=True)
+    dataset = dset.CIFAR10 (args.root, train=True, download=True)
   elif name == 'cifar100':
-    dataset = dset.CIFAR100(args.root, train=True)
+    dataset = dset.CIFAR100(args.root, train=True, download=True)
   elif name == 'imagenet-1k':
     dataset = dset.ImageFolder(osp.join(args.root, 'train'))
   else: raise TypeError("Unknow dataset : {:}".format(name))

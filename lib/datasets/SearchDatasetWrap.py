@@ -12,6 +12,7 @@ class SearchDataset(data.Dataset):
     self.data        = data
     self.train_split = train_split.copy()
     self.valid_split = valid_split.copy()
+    print(len(train_split),len(valid_split))
     if check:
       intersection = set(train_split).intersection(set(valid_split))
       assert len(intersection) == 0, 'the splitted train and validation sets should have no intersection'

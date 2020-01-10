@@ -16,6 +16,7 @@ from .cell_searchs import CellStructure, CellArchitectures
 
 # Cell-based NAS Models
 def get_cell_based_tiny_net(config):
+
   super_type = getattr(config, 'super_type', 'basic')
   group_names = ['DARTS-V1', 'DARTS-V2', 'GDAS', 'SETN', 'ENAS', 'RANDOM']
   if super_type == 'basic' and config.name in group_names:
