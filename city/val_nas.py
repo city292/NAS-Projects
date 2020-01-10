@@ -22,7 +22,7 @@ def weights_init(m):
         nn.init.xavier_uniform(m.bias.data)
 
 
-search_model = torch.load('/home/city/disk/log/builds-darts/darts2_0024_20200107_112_71.52.pth')
+search_model = torch.load('/home/city/disk/log/builds-darts/darts2_0026_20200108_110_71.66.pth')
 # search_model.apply(weights_init)
 print(nn.functional.softmax(search_model.arch_parameters, dim = -1))
 print(search_model.genotype())
@@ -109,14 +109,10 @@ for epoch in range(10000):
         _, logits = search_model(base_inputs.cuda())
         base_loss = criterion(logits, base_targets)
 
-
         l2_reg = 0
         for W in search_model.get_weights():
             l2_reg += W.norm(2)
         base_loss += reg_lambda * l2_reg
-
-
-
 
         base_loss.backward()
         torch.nn.utils.clip_grad_norm_(search_model.parameters(), 5)
@@ -152,3 +148,4 @@ for epoch in range(10000):
 
     print('Epoch %04d acc %.2f val_acc %.2f used %.2fs' % (epoch+1, base_top1.avg, arch_top1.avg,time.time()-time_pre))
     time_pre=time.time()
+
