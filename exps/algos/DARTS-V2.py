@@ -10,8 +10,6 @@ import torch
 import torch.nn as nn
 from pathlib import Path
 
-# lib_dir = (Path(__file__).parent / '..' / '..' / 'lib').resolve()
-# if str(lib_dir) not in sys.path: sys.path.insert(0, str(lib_dir))
 from config_utils import load_config, dict2config, configure2str
 from datasets     import get_datasets, SearchDataset
 from procedures   import prepare_seed, prepare_logger, save_checkpoint, copy_checkpoint, get_optim_scheduler
