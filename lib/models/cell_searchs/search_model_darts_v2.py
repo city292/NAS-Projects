@@ -62,6 +62,7 @@ class TinyNetworkDartsV2(nn.Module):
     def extra_repr(self):
         return ('{name}(C={_C}, Max-Nodes={max_nodes}, N={_layerN}, L={_Layer})'.format(name=self.__class__.__name__, **self.__dict__))
 
+
     def genotype(self):
         genotypes = []
         for i in range(1, self.max_nodes):
@@ -74,6 +75,7 @@ class TinyNetworkDartsV2(nn.Module):
                 xlist.append((op_name, j))
             genotypes.append( tuple(xlist) )
         return Structure( genotypes )
+
 
     def forward(self, inputs):
         alphas  = nn.functional.softmax(self.arch_parameters, dim=-1)
